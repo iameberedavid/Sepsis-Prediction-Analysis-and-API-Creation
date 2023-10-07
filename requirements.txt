@@ -1,5 +1,6 @@
 black
-fastapi
+fastapi[all]
 uvicorn
 pandas
 scikit-learn
+tabulate

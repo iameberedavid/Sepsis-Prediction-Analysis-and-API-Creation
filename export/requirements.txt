@@ -51,6 +51,7 @@ h5py==3.9.0
 html2image==2.0.3
 htmlmin==0.1.12
 httpcore==0.17.3
+httptools==0.6.0
 httpx==0.24.1
 huggingface-hub==0.16.4
 idna==3.4
@@ -182,6 +183,7 @@ uvicorn==0.23.2
 validators==0.20.0
 visions==0.7.5
 watchdog==3.0.0
+watchfiles==0.20.0
 wcwidth==0.2.6
 webcolors==1.13
 webencodings==0.5.1

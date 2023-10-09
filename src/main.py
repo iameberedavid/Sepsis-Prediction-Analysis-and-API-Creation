@@ -15,7 +15,7 @@ def load_ml_components(fp):
 
 # Variables and Constants
 DIRPATH = os.path.dirname(os.path.realpath(__file__))
-ml_core_fp = os.path.join(DIRPATH, 'assets', 'export', 'ml_components.pkl')
+ml_core_fp = os.path.join(DIRPATH, 'export', 'ml_components.pkl')
 
 # Load the Machine Learning components
 ml_components_dict = load_ml_components(fp=ml_core_fp)
@@ -38,7 +38,7 @@ class Sepsis(BaseModel):
     TS: float
     M11: float
     BD2: float
-    AGE: float
+    Age: float
     Insurance: float
 
 # APP
@@ -47,7 +47,7 @@ app = FastAPI(title='Sepsis Prediction App')
 @app.get('/')
 async def root():
     return {
-        'info: This app was built using streamlit to predict if patients are Sepsis Positive or Sepsis Negative'
+        'info': 'This app was built using streamlit to predict if patients are Sepsis Positive or Sepsis Negative'
     }
 
 @app.post('/classify')
@@ -63,7 +63,7 @@ async def sepsis_prediction(sepsis: Sepsis):
                 'TS': [sepsis.TS],
                 'M11': [sepsis.M11],
                 'BD2': [sepsis.BD2],
-                'AGE': [sepsis.AGE],
+                'Age': [sepsis.Age],
                 'Insurance': [sepsis.Insurance]
             }
         )
@@ -78,7 +78,6 @@ async def sepsis_prediction(sepsis: Sepsis):
         # Calculate the confidence score by taking the maximum probability among predicted classes
         confidence_score = predict.max(axis=-1)
 
-
         # Calculate confidence score percentage and round to 2 decimal places
         confidence_score_percentage = round(confidence_score[0]*100),2
         print(f'The confidence score is {confidence_score_percentage}%')
@@ -92,7 +91,7 @@ async def sepsis_prediction(sepsis: Sepsis):
         # Replace the numeric predicted labels with human-readable labels using the mapping
         df['predicted_label'] = [mapping[x] for x in df['predicted_label']]
 
-        # Format the confidence score as a percentage and store it in the 'confidence_score' column
+        # Store the confidence score percentage in the 'confidence_score' column
         df['confidence_score'] = f'{confidence_score_percentage}%'
 
 

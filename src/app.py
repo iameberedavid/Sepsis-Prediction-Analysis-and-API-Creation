@@ -18,24 +18,15 @@ def predict_churn(gender, SeniorCitizen, Partner, Dependents, PhoneService, Mult
     
     # Extract the ML components
     model = loaded_model_components['model']
-    encoder = loaded_model_components['encoder']
     scaler = loaded_model_components['scaler']
 
-    # Create a list of categorical features
-    cat_features = [gender, SeniorCitizen, Partner, Dependents, PhoneService, MultipleLines, InternetService,
-                    OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport, StreamingTV, StreamingMovies,
-                    Contract, PaperlessBilling, PaymentMethod]
+    # Create a Dataframe to use for API
+    train = 
     
-    # Encode the categorical features
-    encoded_data = encoder.transform([cat_features])
-    
-    num_data = np.array([[tenure, MonthlyCharges, TotalCharges]])
-    scaled_num_data = scaler.transform(num_data)
-    
-    combined_data = np.hstack((encoded_data, scaled_num_data))
+    scaled_train = scaler.transform(train)
     
     # Make prediction using the fitted model
-    model_output = model.predict_proba(combined_data)
+    model_output = model.predict_proba(scaled_train)
     prob_churn = float(model_output[0][1])
     return {'Churn Probability': prob_churn}
 

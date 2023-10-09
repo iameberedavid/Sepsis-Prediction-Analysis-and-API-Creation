@@ -47,7 +47,7 @@ class Sepsis(BaseModel):
     TS: float
     M11: float
     BD2: float
-    AGE: float
+    Age: float
     Insurance: float
 
 @app.post('/classify')
@@ -63,7 +63,7 @@ async def sepsis_prediction(sepsis: Sepsis):
                 'TS': [sepsis.TS],
                 'M11': [sepsis.M11],
                 'BD2': [sepsis.BD2],
-                'AGE': [sepsis.AGE],
+                'Age': [sepsis.Age],
                 'Insurance': [sepsis.Insurance]
             }
         )

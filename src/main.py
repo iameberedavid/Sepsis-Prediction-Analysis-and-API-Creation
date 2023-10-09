@@ -47,7 +47,7 @@ app = FastAPI(title='Sepsis Prediction App')
 @app.get('/')
 async def root():
     return {
-        'info': 'This app was built using streamlit to predict if patients are Sepsis Positive or Sepsis Negative'
+        'This app was built using streamlit to predict if patients are Sepsis Positive or Sepsis Negative'
     }
 
 @app.post('/classify')

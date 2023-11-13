@@ -16,7 +16,7 @@ Welcome to the **Sepsis Prediction and API Creation** project. This project aims
 
 Sepsis is a critical medical condition characterized by the body's extreme response to infection, often leading to severe tissue damage, multiple organ failure, and even death. Each year, approximately 30 million individuals worldwide develop sepsis, with a staggering one-fifth of them succumbing to the disease. Detecting sepsis early and initiating immediate treatment is crucial for saving lives and improving patient outcomes.
 
-Machine Learning models will be trained, and the best performing model will be used to make predictions on the test dataset. This model will then be used to build a FastAPI, which will be containerized in a docker and hosted on HuggingFace. This will make the model publicly available, and can be used with or without technical knowledge.
+Machine Learning models will be trained to make accurate sepsis predictions, and the best performing model will be used to make predictions on the test dataset. This model will then be used to build a FastAPI, which will be containerized in a docker and hosted on HuggingFace. This will make the model publicly available, and can be used with or without technical knowledge.
 
 ## Notebook Preview
 

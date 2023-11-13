@@ -51,18 +51,18 @@ You need to have [`Python 3`](https://www.python.org/) on your system (**Python 
         
         python3 -m venv venv; source venv/bin/activate; python -m pip install -q --upgrade pip; python -m pip install -qr requirements.txt  
 
-The both long command-lines have a same structure, they pipe multiple commands using the symbol ` ; ` but you may manually execute them one after another.
+The two long command-lines have the same structure. They pipe multiple commands using the symbol ` ; ` but you can manually execute them one after the other.
 
 1. **Create the Python's virtual environment** that isolates the required libraries of the project to avoid conflicts;
 2. **Activate the Python's virtual environment** so that the Python kernel & libraries will be those of the isolated environment;
 3. **Upgrade Pip, the installed libraries/packages manager** to have the up-to-date version that will work correctly;
-4. **Install the required libraries/packages** listed in the `requirements.txt` file so that it will be allow to import them into the python's scripts and notebooks without any issue.
+4. **Install the required libraries/packages** listed in the `requirements.txt` file so that they can be imported into the python script and notebook without any issue.
 
 **NB:** For MacOs users, please install `Xcode` if you have an issue.
 
 ## Run FastAPI
 
-- Run the demo apps (being at the repository root):
+- Run the API (being at the repository root):
         
   FastAPI:
     
@@ -75,7 +75,7 @@ The both long command-lines have a same structure, they pipe multiple commands u
           uvicorn src.main:app --reload  -->
 
 
-  - Go to your browser at the following address, to explore the api's documentation :
+  - Go to your browser at the following address, to explore the API's documentation :
         
       http://127.0.0.1:8000/docs
 

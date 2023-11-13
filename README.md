@@ -18,7 +18,7 @@ Sepsis is a critical medical condition characterized by the body's extreme respo
 
 The model will be embedded into a FastAPI, which will be containerized in a docker and hosted on HuggingFace. This will make the model publicly available, and can be used with or without technical knowledge.
 
-### Preview
+## Notebook Preview
 
 Below is a preview showcasing some features of the notebook:
 
@@ -34,6 +34,25 @@ Below is a preview showcasing some features of the notebook:
     <div style="flex: 33.33%; text-align: center;">
         <p>Test Prediction</p>
         <img src="Images/Readmepics/Test Prediction.png" alt="Middle" width="90%"/>
+        </div>
+</div>
+
+## FastAPI Preview
+
+Below is a preview showcasing some features of the FastAPI:
+
+<div style="display: flex; align-items: center;">
+    <div style="flex: 33.33%; text-align: center;">
+        <p>FastAPI1</p>
+        <img src="Images/Readmepics/FastAPI1.png" alt="Top" width="90%"/>
+    </div>
+    <div style="flex: 33.33%; text-align: center;">
+        <p>FastAPI2</p>
+        <img src="Images/Readmepics/FastAPI2.png" alt="Middle" width="90%"/>
+        </div>
+    <div style="flex: 33.33%; text-align: center;">
+        <p>FastAPI Prediction</p>
+        <img src="Images/Readmepics/FastAPI Prediction.png" alt="Middle" width="90%"/>
         </div>
 </div>
 

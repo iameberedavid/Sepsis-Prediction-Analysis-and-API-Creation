@@ -109,9 +109,9 @@ Here are some ressources you would read to have a good understanding of FastAPI 
 
 ## Author
 
-| Name | Profile | Project Repository | Deployment | Project Article | Contact |
-| ---- | ------- | ------------------ | ---------- | --------------- | ------- |
-| Chidiebere David Ogbonna | [LinkedIn](https://www.linkedin.com/in/chidieberedavidogbonna/) | [GitHub](https://github.com/iameberedavid/Sepsis-Prediction-Analysis-and-API-Creation) | [HuggingFace](https://huggingface.co/spaces/iameberedavid/Sepsis_Prediction_API_Docker_Deployment) | [Medium](https://eberedavid.medium.com/sepsis-prediction-analysis-and-api-creation-8dc92718760a) | eberedavid326@gmail.com |
+| Name | Profile | Twitter | Contact | Article | Deployment |
+| ---- | ------- | ------- | ------- | ------- | ---------- |
+| Chidiebere David Ogbonna | [LinkedIn](https://www.linkedin.com/in/chidieberedavidogbonna/) | [iameberedavid](https://twitter.com/iameberedavid) | eberedavid326@gmail.com | [Medium](https://eberedavid.medium.com/sepsis-prediction-analysis-and-api-creation-8dc92718760a) | [HuggingFace](https://huggingface.co/spaces/iameberedavid/Sepsis_Prediction_API_Docker_Deployment) |
 
 ## Acknowledgments
 

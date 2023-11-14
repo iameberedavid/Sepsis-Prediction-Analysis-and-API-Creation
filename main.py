@@ -6,37 +6,6 @@ import pandas as pd
 import pickle, os
 from pydantic import BaseModel
 
-# Additional information to include in app description
-additional_info = """
-- PRG: Plasma Glucose
-- PL: Blood Work Result-1 (mu U/ml)
-- PR: Blood Pressure (mm Hg)
-- SK: Blood Work Result-2 (mm)
-- TS: Blood Work Result-3 (mu U/ml)
-- M11: Body Mass Index (weight in kg/(height in m)^2)
-- BD2: Blood Work Result-4 (mu U/ml)
-- Age: Patient's Age (years)
-- Insurance: If a patient holds a valid insurance card
-
-Output:
-- Sepsis: Positive if a patient in ICU will develop sepsis, Negative if a patient in ICU will not develop sepsis.
-"""
-
-# APP
-app = FastAPI(
-    title='Sepsis Prediction App',
-    description='This app was built to predict if patients are Sepsis Positive or Sepsis Negative. '
-                'It uses a machine learning model to make predictions based on patient data. '
-                'Below is the kind of patient data required for the prediction, and the meaning of the prediction output.'
-                + additional_info
-)
-
-@app.get('/')
-async def root():
-    return {
-        'This app was built to predict if patients are Sepsis Positive or Sepsis Negative.'
-    }
-
 # Useful functions
 def load_ml_components(fp):
     'Load the ML component to re-use in app'
@@ -72,6 +41,15 @@ class Sepsis(BaseModel):
     Age: float
     Insurance: float
 
+# APP
+app = FastAPI(title='Sepsis Prediction App')
+
+@app.get('/')
+async def root():
+    return {
+        'This app was built using streamlit to predict if patients are Sepsis Positive or Sepsis Negative'
+    }
+
 @app.post('/classify')
 async def sepsis_prediction(sepsis: Sepsis):
     try:
@@ -94,20 +72,31 @@ async def sepsis_prediction(sepsis: Sepsis):
         # Scale the input features
         scaled_df = scaler.transform(df)
 
-        # Make prediction using the loaded model
-        prediction = model.predict(scaled_df)
+        # Make prediction
+        predict = model.predict(scaled_df)
+        
+        # Calculate the confidence score by taking the maximum probability among predicted classes
+        confidence_score = predict.max(axis=-1)
 
-        # Extract the predicted label
-        df['Sepsis'] = prediction
+        # Calculate confidence score percentage and round to 2 decimal places
+        confidence_score_percentage = round(confidence_score[0]*100),2
+        print(f'The confidence score is {confidence_score_percentage}%')
 
-        # Define a mapping from class labels to human-readable labels (Positive and Negative)
-        mapping = {0: 'Negative', 1: 'Positive'}
+        # Extract the class label with the highest probability as the predicted label
+        df['predicted_label'] = predict.argmax(axis=-1)
 
-        # Add Sepsis column to the original test dataset using the mapping to identify Sepsis Positive and Sepsis Negative patients
-        df['Sepsis'] = [mapping[x] for x in df['Sepsis']]
+        # Define a mapping from class labels to human-readable labels
+        mapping = {0: 'Sepsis Negative', 1: 'Sepsis Positive'}
+
+        # Replace the numeric predicted labels with human-readable labels using the mapping
+        df['predicted_label'] = [mapping[x] for x in df['predicted_label']]
+
+        # Store the confidence score percentage in the 'confidence_score' column
+        df['confidence_score'] = f'{confidence_score_percentage}%'
+
 
         # Print results
-        print(f"The Patient has been predicted as : {df['Sepsis'].values[0]}")
+        print(f'The Patient has been predicted as : {df["predicted_label"].values[0]}')
         msg = 'Execution went fine'
         code = 1
         pred = df.to_dict('records')
